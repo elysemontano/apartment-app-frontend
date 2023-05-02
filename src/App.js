@@ -23,7 +23,7 @@ const App=()=>{
   }, [])
 
   const login = async (userInfo) => {
-    const url="http://localhost:3000/login"
+    const url="https://apartment-app-backend.onrender.com/login"
     try{
         const response = await fetch(url, {
             method: "POST",
@@ -44,7 +44,7 @@ const App=()=>{
   }
 
   const signup = async (userInfo) => {
-    const url="http://localhost:3000/signup"
+    const url="https://apartment-app-backend.onrender.com/signup"
     try{
         const response = await fetch(url, {
             method: 'post',
@@ -65,7 +65,7 @@ const App=()=>{
 
   const logout = async () => {
     try {
-        const response=await fetch("http://localhost:3000/logout",{
+        const response=await fetch("https://apartment-app-backend.onrender.com/logout",{
             method: "delete",
             headers: {
                 "content-type": "application/json",
@@ -82,7 +82,7 @@ const App=()=>{
   }
 
   const readApartments = () => {
-    fetch("http://localhost:3000/apartments")
+    fetch("https://apartment-app-backend.onrender.com/apartments")
       .then((response) => response.json())
       .then((payload) => {
         setApartments(payload)
@@ -92,7 +92,7 @@ const App=()=>{
 
 
   const createApartment = (apartment) => {
-    fetch("http://localhost:3000/apartments", {
+    fetch("https://apartment-app-backend.onrender.com/apartments", {
       body: JSON.stringify(apartment),
       headers: {
         "Content-Type": "application/json"
@@ -105,7 +105,7 @@ const App=()=>{
   }
 
   const editApartment = (apartment, id) => {
-    fetch(`http://localhost:3000/apartments/${id}`, {
+    fetch(`https://apartment-app-backend.onrender.com/apartments/${id}`, {
       body: JSON.stringify(apartment),
       headers: {
         "Content-Type": "application/json"
@@ -118,7 +118,7 @@ const App=()=>{
   }
 
   const deleteApartment = (id) => {
-    fetch(`http://localhost:3000/apartments/${id}`, {
+    fetch(`https://apartment-app-backend.onrender.com/apartments/${id}`, {
       headers: {
         "Content-Type": "application/json"
       },
@@ -128,7 +128,6 @@ const App=()=>{
     .then(() => readApartments())
     .catch((errors) => console.log("delete errors:", errors))
   }
-  console.log(currUser)
   return (
     <>    
       <Header current_user={currUser} logout={logout} setCurrUser={setCurrUser}/>
