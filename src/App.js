@@ -12,20 +12,20 @@ import Home from "./pages/Home"
 import NotFound from "./pages/NotFound"
 import Signup from "./components/Signup"
 import Login from "./components/Login"
-import User from './components/User'
 
 const App=()=>{
   const [apartments, setApartments] = useState([])
   const [currUser, setCurrUser]=useState(null)
-
+  
   useEffect(() => {
     readApartments()
   }, [])
-
+  
+  const url="https://apartment-app-backend.onrender.com"
+  // const url = "http://localhost:3000"
   const login = async (userInfo) => {
-    const url="https://apartment-app-backend.onrender.com/login"
     try{
-        const response = await fetch(url, {
+        const response = await fetch(`${url}/login`, {
             method: "POST",
             headers: {
               'content-type': 'application/json',
@@ -44,9 +44,8 @@ const App=()=>{
   }
 
   const signup = async (userInfo) => {
-    const url="https://apartment-app-backend.onrender.com/signup"
     try{
-        const response = await fetch(url, {
+        const response = await fetch(`${url}/signup`, {
             method: 'post',
             headers: {
                 "content-type": 'application/json',
@@ -65,7 +64,7 @@ const App=()=>{
 
   const logout = async () => {
     try {
-        const response=await fetch("https://apartment-app-backend.onrender.com/logout",{
+        const response = await fetch(`${url}/logout`,{
             method: "delete",
             headers: {
                 "content-type": "application/json",
@@ -82,7 +81,7 @@ const App=()=>{
   }
 
   const readApartments = () => {
-    fetch("https://apartment-app-backend.onrender.com/apartments")
+    fetch(`${url}/apartments`)
       .then((response) => response.json())
       .then((payload) => {
         setApartments(payload)
@@ -92,7 +91,7 @@ const App=()=>{
 
 
   const createApartment = (apartment) => {
-    fetch("https://apartment-app-backend.onrender.com/apartments", {
+    fetch(`${url}/apartments`, {
       body: JSON.stringify(apartment),
       headers: {
         "Content-Type": "application/json"
@@ -105,7 +104,7 @@ const App=()=>{
   }
 
   const editApartment = (apartment, id) => {
-    fetch(`https://apartment-app-backend.onrender.com/apartments/${id}`, {
+    fetch(`${url}/apartments/${id}`, {
       body: JSON.stringify(apartment),
       headers: {
         "Content-Type": "application/json"
@@ -118,7 +117,7 @@ const App=()=>{
   }
 
   const deleteApartment = (id) => {
-    fetch(`https://apartment-app-backend.onrender.com/apartments/${id}`, {
+    fetch(`${url}/apartments/${id}`, {
       headers: {
         "Content-Type": "application/json"
       },
@@ -135,10 +134,10 @@ const App=()=>{
         <Route exact path="/" element={<Home current_user={currUser} />} />
         <Route path="/login" element={<Login login={login}/>} />
         <Route path="/signup" element={<Signup signup={signup}/>} />
-       <Route path="/user" element={ <User currUser={currUser} setCurrUser={setCurrUser} />} />
+       {/* <Route path="/user" element={ <User currUser={currUser} setCurrUser={setCurrUser} />} /> */}
         <Route path="/apartmentindex" element={<ApartmentIndex apartments={apartments} />} />
         <Route path="/myapartments" element={<MyApartments current_user={currUser} apartments={apartments} />} />
-        <Route path="/apartmentshow/:id" element={<ApartmentShow current_user={currUser} apartments={apartments} deleteApartment={deleteApartment} editApartment={editApartment}/>} />
+        <Route path="/apartmentshow/:id" element={<ApartmentShow current_user={currUser} apartments={apartments} deleteApartment={deleteApartment}/>} />
         <Route path="/apartmentnew" element={<ApartmentNew current_user={currUser} createApartment={createApartment} />} />
         <Route path="/apartmentedit/:id" element={<ApartmentEdit current_user={currUser} editApartment={editApartment} apartments={apartments} />} />
         <Route path="*" element={<NotFound />} />
