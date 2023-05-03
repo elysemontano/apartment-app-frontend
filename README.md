@@ -1,4 +1,6 @@
 # Setup Process
+Documentation process mostly followed: [Authenticate User with Devise Gem and Devise JWT in React Application by Villy Siu](https://medium.com/@villysiu/authenticate-user-with-devise-gem-and-devise-jwt-in-react-application-2-2-98eff841ec88)
+
 First we need to create a react app
 
 `$ yarn create react-app apartment-app-frontend`
