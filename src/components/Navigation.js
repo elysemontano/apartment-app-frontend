@@ -23,7 +23,7 @@ const Navigation = ({current_user, logout}) => {
               <NavLink to="/apartmentnew" className="nav-link">Create Listing</NavLink>
             </NavItem>
             <NavItem>
-              <input type="button" value='Logout' onClick={handleClick}/>
+              <NavLink className="nav-link" onClick={handleClick}>Log Out</NavLink>
             </NavItem>
           </>
         )}
