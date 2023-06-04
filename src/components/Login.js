@@ -17,16 +17,19 @@ const Login = ({ login }) => {
       e.target.reset()
   }
   return(
-    <div>
-      <form ref={formRef} onSubmit={handleSubmit}>
-        Email: <input type="email" name='email' placeholder="email" />
+    <div className="auth-body">
+      <h2 className="header">Login</h2>
+      <form className="form-div" ref={formRef} onSubmit={handleSubmit}>
+        Email: <input className="field auth-flex" type="email" name='email' placeholder="email" />
         <br/>
-        Password: <input type="password" name='password' placeholder="password" />
+        Password: <input className="field auth-flex" type="password" name='password' placeholder="password" />
         <br/>
-        <input type='submit' value="Login" />
+        <input className="actions" type='submit' value="Login" />
+        <div className="links">Not registered yet?  
+          <a href="/signup">  <u>Signup</u></a> 
+        </div>
       </form>
-      <br />
-      <div>Not registered yet, <a href="/signup">Signup</a> </div>
+      
     </div>
   )
 }
