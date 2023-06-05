@@ -1,4 +1,12 @@
-# Setup Process
+# 🏘 Apartment App
+
+This apartment application was built to completely build out new curriculum shift and aid in documentation process to implement JWT.  Full CRUD was implemented and styling is reflective of [Figma wireframe](https://www.figma.com/file/If1WCghFfg5Balueeb2Tgv/Apartment-App?type=design&node-id=0%3A1&t=vKzKbBadzMqaOlfb-1) created for students and updated with updated color and images.
+
+## Deployment
+Deployment was done through Render. Link can be found: [Apartment App](https://apartment-app-frontend.onrender.com/)
+
+
+## Setup Process
 Documentation process mostly followed: [Authenticate User with Devise Gem and Devise JWT in React Application by Villy Siu](https://medium.com/@villysiu/authenticate-user-with-devise-gem-and-devise-jwt-in-react-application-2-2-98eff841ec88)
 
 First we need to create a react app
@@ -6,7 +14,7 @@ First we need to create a react app
 `$ yarn create react-app apartment-app-frontend`
 `$ cd apartment-app-frontend`
 
-## Configure Port (optional)
+### Configure Port (optional)
 We can setup a specific port to start in development for React by creating a .env file and adding:
 
 ```javascript
@@ -22,7 +30,7 @@ $ yarn add reactstrap
 Add to src/index.js: import 'bootstrap/dist/css/bootstrap.min.css'
 ```
 
-## React Router
+### React Router
 First we need to add the necessary packages to our application using a yarn command. This adds the React Router dependencies to the package.json file.
 
 `$ yarn add react-router-dom`
@@ -92,7 +100,7 @@ return (
   );
 ```
 
-## Setup User
+### Setup User
 We will first need to setup a state variable that will store the current user in with the default value set to null.  Later, this will be updated with a fetch call.
 
 ```javascript
@@ -184,7 +192,7 @@ const Login = () => {
 export default Login
 ```
 
-## Fetching User
+### Fetching User
 Let's now setup our fetch calls for user in App.js
 
 ```javascript
@@ -249,10 +257,10 @@ const url = "http://localhost:3000"
 
 We can now check if we the fetch call is working by throwing a console log of currUser. 
 
-## Apartments
+### Apartments
 Now that we have working authentication, we can finish setting up the rest of the Apartment App. 
 
 Note: we will be using currUser as a reference point to conditionally render certain parts of our application.  
 
-## Deployment
+### Deployment
 Make sure to update the url for the fetch calls to the relative url used for API.
