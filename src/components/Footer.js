@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <>
       <div className="footer">
-        <h3 style={{fontSize: "15px"}}>©LEARN Academy</h3>
+        <h3 style={{fontSize: "15px"}}>©LEARN Academy | Elyse Montano</h3>
       </div>
     </>
   )
